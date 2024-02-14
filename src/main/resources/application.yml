@@ -1,0 +1,12 @@
+spring:
+    freemarker:
+        template-loader-path: file:///D:/Space/InclusivePlatform/term/src/main/resources/templates
+        cache: false
+        prefer-file-system-access: true
+    web:
+        resources:
+            chain:
+                cache: false
+    server:
+        error:
+            path: "/error"
