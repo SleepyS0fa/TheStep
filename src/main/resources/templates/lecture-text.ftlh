@@ -9,7 +9,7 @@
   </div>
   <hr>
   <div class='shadow-sm row border rounded mb-3'>
-    <p>${lecture.text}</p>
+    <p>${lecture.text?no_esc}</p>
   </div>
   <div class='row'>
       <#list lecture.terms as term>
@@ -24,5 +24,6 @@
       <p class='h3 text-end'>${lecture.author}</p>
     </div>
   </div>
+  <a class='btn btn-primary' href='/lecture'>Назад</a>
 </div>
 </@c.page>

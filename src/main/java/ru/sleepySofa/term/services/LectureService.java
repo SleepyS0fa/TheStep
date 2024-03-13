@@ -1,78 +1,60 @@
 package ru.sleepySofa.term.services;
 
-import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sleepySofa.term.models.Lecture;
+import ru.sleepySofa.term.repositories.LectureRepository;
 
 import java.util.*;
 
 @Service
+@Slf4j
+@RequiredArgsConstructor
 public class LectureService {
-    private final List<Lecture> lectures = new ArrayList<>();
-    private long ID = 0;
-    @Getter
-    private final List<String> groups = new ArrayList<>();
-    {
-        groups.add("KK-182");
-        groups.add("КС-191");
-        groups.add("ИБ-202");
-        groups.add("БД-231");
-        groups.add("ИБ-201");
-        lectures.add(new Lecture(++ID,"Sofa",new ArrayList<>(),"text1","Some text",new ArrayList<>(),new ArrayList<>()));
-        lectures.add(new Lecture(++ID,"Sofa",new ArrayList<>(),"text2","Text num2",new ArrayList<>(),new ArrayList<>()));
-        lectures.add(new Lecture(++ID,"Sofa",new ArrayList<>(),"text3","And last text",new ArrayList<>(),new ArrayList<>()));
-
-    }
+    @Autowired
+    private final LectureRepository lectureRepository;
 
     public List<Lecture> listAll() {
-        return lectures;
+        return (List<Lecture>) lectureRepository.findAll();
     }
 
-    public List<Lecture> listForGroup(String group) {
-        List<Lecture> listForGroup = new ArrayList<>();
-        for (Lecture lecture : lectures) {
-            if (lecture.getGroups().contains(group))
-                listForGroup.add(lecture);
-        }
-        return listForGroup;
-    }
+//    public List<Lecture> listForGroup(String group) {
+//        return lectureRepository.findByGroups(group);
+//    }
 
     public boolean saveLecture(Lecture lecture) {
-        try {
-            lecture.setId(++ID);
-            lectures.add(lecture);
-            System.out.println(lecture);
-        } catch (Exception e) {
-            return false;
-        }
+        log.info("Saving new {}", lecture);
+        lectureRepository.save(lecture);
         return true;
     }
 
     public boolean deleteLecture(Long id) {
-        try {
-            lectures.removeIf(lecture -> lecture.getId().equals(id));
-        } catch (Exception e) {
-            return false;
-        }
+        log.info("Deleting {}", id);
+        lectureRepository.deleteById(id);
         return true;
     }
 
     public List<Lecture> getLecturesByAuthor(String author) {
-        List<Lecture> lecturesList = new ArrayList<>();
-        for (Lecture lecture: lectures) {
-            if (lecture.getAuthor().equals(author)) {
-                lecturesList.add(lecture);
-            }
+        log.info("Getting by author{}", author);
+        List<Lecture> lectures = lectureRepository.findByAuthor(author);
+        if (lectures == null) {
+            return listAll();
         }
-        return lecturesList.isEmpty()? null : lecturesList;
+        return lectures;
+    }
+    public List<Lecture> getLecturesByTitle(String title) {
+        log.info("Getting by author{}", title);
+        List<Lecture> lectures = lectureRepository.findByTitle(title);
+        if (lectures == null) {
+            return listAll();
+        }
+        return lectures;
     }
 
     public Lecture getLectureById(Long id) {
-        for(Lecture lecture: lectures) {
-            if (lecture.getId().equals(id)) {
-                return lecture;
-            }
-        }
-        return null;
+        log.info("Getting {}", id);
+        return lectureRepository.findById(id).orElse(null);
     }
 }

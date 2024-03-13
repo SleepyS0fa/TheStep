@@ -5,18 +5,13 @@
 <div class = 'container'>
   <div class = 'col'>
     <div class = 'row'>
-      <#list lectures as lecture>
-        <div class="card" style="width: 15rem;">
-          <div class="card-body">
-            <h5 class="card-title">${lecture.title}</h5>
-              <p class="card-text">${lecture.author}</p>
-              <a class = 'btn btn-sm btn-primary' href="/lecture/${lecture.id}">Читать..</a>
-          </div>
-        </div>
-      </#list>
+      <a class = 'btn btn-sm btn-primary m-2' href="/lecture">Лекции</a>
+      <a class = 'btn btn-sm btn-primary m-2' href="/">Что-то еще</a>
+      <a class = 'btn btn-sm btn-primary m-2' href="/">Что-то еще</a>
+      <a class = 'btn btn-sm btn-primary m-2' href="/">Что-то еще</a>
     </div>
   </div>
 </div>
 <hr>
-<a class='btn btn-primary' href='/lecture/create?valTerms=5'>Создать лекцию</a>
+<a class='btn btn-primary' href='/lecture/create'>Создать лекцию</a>
 </@c.page>

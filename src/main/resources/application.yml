@@ -10,3 +10,11 @@ spring:
     server:
         error:
             path: "/error"
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+    datasource:
+        url: jdbc:postgresql:lecturesDB
+        username: postgres
+        password: admin
