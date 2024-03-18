@@ -1,9 +1,7 @@
 package ru.sleepySofa.term.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,8 +18,8 @@ public class Lecture implements Serializable {
     private Long id;
     @Column(name = "author")
     private String author;
-    @Column(name = "groups")
-    private List<String> groups;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Group> groups;
     @Column(name = "title")
     private String title;
     @Column(name = "text", columnDefinition = "text")
@@ -30,8 +28,6 @@ public class Lecture implements Serializable {
     private List<String> terms;
     @Column(name = "def")
     private List<String> def;
-
-
 }
 
 

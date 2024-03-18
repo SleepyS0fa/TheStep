@@ -5,7 +5,7 @@
     <hr>
     <div class = 'row'>
       <form action='/lecture' method='get'>
-        <input type='text' name='title'></input>
+        <input type='text' name='search'></input>
         <button type='submit' class='btn btn-secondary'>Поиск</button>
       </form>
     </div>
