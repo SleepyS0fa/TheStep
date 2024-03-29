@@ -1,4 +1,4 @@
-<#import "macro/common.ftlh" as c>
+<#import "/utility/common.ftlh" as c>
 <@c.page>
 <h1>Создать лекцию</h1>
 <div class = 'container'>

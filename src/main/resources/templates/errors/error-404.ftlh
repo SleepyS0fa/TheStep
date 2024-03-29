@@ -1,4 +1,4 @@
-<#import "../macro/common.ftlh" as c>
+<#import "/utility/common.ftlh" as c>
 <@c.page>
   <div class='container'>
     <div class='row m-3'>

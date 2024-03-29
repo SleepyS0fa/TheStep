@@ -13,7 +13,7 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
     public String error (HttpServletRequest request) {
         Object status =request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         if (status != null) {
-            Integer statusCode = Integer.valueOf(status.toString());
+            int statusCode = Integer.parseInt(status.toString());
 
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "errors/error-404";

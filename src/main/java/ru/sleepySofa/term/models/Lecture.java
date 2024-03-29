@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "lectures")
-public class Lecture implements Serializable {
+public class Lecture implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -24,7 +24,7 @@ public class Lecture implements Serializable {
     private String title;
     @Column(name = "text", columnDefinition = "text")
     private String text;
-    @Column(name = "terms")
+    @Column(name = "term")
     private List<String> terms;
     @Column(name = "def")
     private List<String> def;

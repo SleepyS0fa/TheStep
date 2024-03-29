@@ -23,8 +23,6 @@ public class LectureController {
     private final GroupService groupService;
     @Autowired
     private final LectureService lectureService;
-    @Autowired
-    private final StudentService studentService;
     @GetMapping("/lecture")
     public String infoLecture(@RequestParam(name = "search", required = false) String search, Model model) {
 
