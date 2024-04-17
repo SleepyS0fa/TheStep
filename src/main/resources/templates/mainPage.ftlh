@@ -1,17 +1,11 @@
 <#import "/utility/common.ftlh" as c>
 <@c.page>
-<h1>Лекции</h1>
 <hr>
-<div class = 'container'>
-  <div class = 'col'>
-    <div class = 'row'>
-      <a class = 'btn btn-sm btn-primary m-2' href="/lecture">Лекции</a>
-      <a class = 'btn btn-sm btn-primary m-2' href="/login">Логин</a>
-      <a class = 'btn btn-sm btn-primary m-2' href="/registration">Регистрация</a>
-      <a class = 'btn btn-sm btn-primary m-2' href="/">Что-то еще</a>
-    </div>
-  </div>
+<div class="container">
+    <h1>Добро пожаловать в "Равные Шансы"</h1>
+    <p>Мы разрабатываем платформу для инклюзивного обучения глухих. Наше решение поможет образовательным учреждениям облегчить процесс обучения глухих студентов.</p>
+    <p>Мы стремимся к тому, чтобы каждый человек имел равные возможности для получения образования, независимо от их особенностей.</p>
+    <button class="btn btn-primary">Узнать больше</button>
 </div>
 <hr>
-<a class='btn btn-primary' href='/lecture/create'>Создать лекцию</a>
 </@c.page>

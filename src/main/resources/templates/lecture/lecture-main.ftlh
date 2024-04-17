@@ -1,4 +1,4 @@
-<#import "/utility/common.ftlh" as c>
+<#import "../utility/common.ftlh" as c>
 <@c.page>
   <h1 class='text-center'>Лекции</h1>
   <div class = 'container'>
@@ -13,10 +13,13 @@
     <div class = 'row'>
       <#list lectures as lecture>
           <div class="card" style="width: 15rem;">
-            <div class="card-body">
+            <div class="card-body d-flex flex-column justify-content-between">
               <h5 class="card-title">${lecture.title}</h5>
-              <p class="card-text">${lecture.author}</p>
-              <a class = 'btn btn-sm btn-primary' href="/lecture/${lecture.id}">Читать..</a>
+              <p class="card-text">${lecture.author.username}</p>
+              <div class="row">
+                <a class = 'btn btn-sm btn-primary mb-1' href="/lecture/${lecture.id}">Читать..</a>
+                <a class = 'btn btn-sm btn-danger mt-1' href="/lecture/delete/${lecture.id}">Удалить</a>
+              </div>
             </div>
           </div>
       <#else>

@@ -8,14 +8,21 @@ spring:
         resources:
             chain:
                 cache: false
+
     server:
         error:
             path: "/error"
     jpa:
         hibernate:
-            ddl-auto: update
+            ddl-auto: create
         show-sql: true
     datasource:
         url: jdbc:postgresql:lecturesDB
         username: postgres
         password: admin
+    mvc:
+        data-binder:
+            enabled: true
+#server:
+#    address: 192.168.1.3
+#    port: 8080

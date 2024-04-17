@@ -6,11 +6,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.sleepySofa.term.models.Image;
+import ru.sleepySofa.term.models.Lecture;
 import ru.sleepySofa.term.models.enums.Role;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,8 +29,6 @@ public class Account implements UserDetails {
     private String email;
     @Column(length = 1000)
     private String password;
-
-    //    Не работает где то тут
     @OneToOne( fetch = FetchType.EAGER)
     @JoinColumn(name = "id_icon")
     private Image avatarIcon;
@@ -37,8 +37,6 @@ public class Account implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-
-    //
     private boolean active;
     private LocalDateTime dateOfCreate;
     @PrePersist

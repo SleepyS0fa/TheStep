@@ -4,7 +4,7 @@ document.querySelector("#morebtn").addEventListener("click", function () {
   let entry = document.createElement('input');
   entry.type = 'text';
   entry.classList.add("form-control", "mt-2");
-  entry.name = 'terms';
+  entry.name = 'term';
   term.appendChild(entry);
 
   entry = document.createElement('input');
@@ -22,3 +22,5 @@ document.querySelector("#lessbtn").addEventListener("click", function () {
     def[def.length-1].remove();
   }
 })
+
+//TODO добавить и убавить количество терминов по кнопкам + -

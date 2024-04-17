@@ -1,19 +1,16 @@
-<#import "/utility/common.ftlh" as c>
+<#import "../utility/common.ftlh" as c>
 <@c.page>
 <h1>Создать лекцию</h1>
 <div class = 'container'>
-  <form class='row' on method='post' action='/lecture/create'>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<meta name="_csrf" content="${_csrf.token}"/>
+  <form id="ajax-form" class='form row' method="POST" action="/lecture/create">
     <div class='m-2'>
       <label for='title' class='form-label'>Тема лекции</label>
       <input required type='text' class='form-control' id='title' name='title'>
     </div>
     <div class='m-2'>
-      <label for='author' class='form-label'>Автор</label>
-      <input required type='text' class='form-control' id='author' name='author'>
-    </div>
-    <div class='m-2'>
       <label for='groups' class='form-label'>Группы</label>
-
 
       <select multiple id="groups" name="groups" class='form-select'>
         <#list groups as group>
@@ -27,7 +24,7 @@
     <div class='row p-2 m-2 border rounded'>
       <div class='col' id='terms'>
         <label for='termText' class='form-label'>Термин</label>
-        <input type='text' class='form-control' id='termText' name='terms'>
+        <input type='text' class='form-control' id='termText' name='term'>
       </div>
       <div class='col' id=def>
         <label for='defText' class='form-label'>Определение</label>
@@ -40,17 +37,20 @@
         </div>
       </div>
     </div>
-
-    <button type='submitbtn' class='btn btn-primary m-3'>Сохранить</button>
+    <button type='submit' id='submit' class='btn btn-primary m-3'>Сохранить</button>
+    <input type="hidden" id="_csrf" name="_csrf" value="${_csrf.token}">
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
   </form>
   <a class='btn btn-primary' href='/lecture'>Назад</a>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/i18n/ru.js"></script>
 <script src="https://cdn.tiny.cloud/1/5b3toniyg7rdg6lkxnzmznhsru5bwxpzcqaal3chk9z3f53v/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script src='/js/editor.js'></script>
 <script src='/js/form.js'></script>
+<script src='/js/editor.js'></script>
+<script src='/js/validForm/newLecture.js'></script>
 <script>
 $( '#groups' ).select2( {
     language: "ru",
